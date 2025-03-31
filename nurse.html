@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nrome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="store.js"></script>
-    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Nrome</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy-policy.html">Privacy Policy</a>
+                        <a class="nav-link" href="terms&conditions.html">Terms & Conditions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h1 class="text-center"><img src="Images/nrome.png" alt="Nrome Logo" class="logo"></h1>
          <!-- Link to Nurse Services -->
@@ -19,18 +34,75 @@
         <!-- Page Description -->
         <div class="text-center my-4">
             <h2 class="display-4">Nurse Housecall</h2>
-            <p class="lead text-muted">Connect with qualified nurses offering home care services. List your nursing services or find the care you need.</p>
+            <p class="lead text-muted">Connect with qualified nurses offering home care services. List your nursing and also, as a doctor owning a surgery services. Basically, find the care you need.</p>
             <hr class="my-4">
         </div>
         <div class="card mt-3">
             <div class="card-body">
                 <form id="serviceForm">
                     <div class="mb-3">
-                <label for="nurseName" class="form-label">Nurse Name</label>
-                <input type="text" class="form-control" id="nurseName" required>
-            </div>
+                        <label for="nurseName" class="form-label">Nurse Name</label>
+                        <input type="text" class="form-control" id="nurseName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label"> City of service in South Africa?</label>
+                        <select class="form-select" id="city" required>
+                            <option value="">Select City</option>
+                            <option value="Pretoria">Pretoria</option>
+                            <option value="Johannesburg">Johannesburg</option>
+                            <option value="Ekurhuleni"> Ekurhuleni</option>
+                            <option value="Midrand">Midrand</option>
+                            <option value="Centurion">Centurion</option>
+                            <option value="Sandton">Sandton</option>
+                            <option value="Cape Town">Cape Town</option>
+                            <option value="Stellenbosch">Stellenbosch</option>
+                            <option value="George">George</option>
+                            <option value="Paternoster">Paternoster</option>
+                            <option value="Knysna">Knysna</option>
+                            <option value="Piketberg">Piketberg</option>
+                            <option value="Ceres">Ceres</option>
+                            <option value="Pietermaritzburg">Pietermaritzburg</option>
+                            <option value="Durban">Durban</option>
+                            <option value="Richards Bay">Richards Bay</option>
+                            <option value="Newcastle">Newcastle</option>
+                            <option value="Umgungundlovu">Umgungundlovu</option>
+                            <option value="Port Elizabeth">Port Elizabeth</option>
+                            <option value="East London">East London</option>
+                            <option value="Mthatha">Mthatha</option>
+                            <option value="Grahamstown">Grahamstown</option>
+                            <option value="Queenstown">Queenstown</option>
+                            <option value="Polokwane">Polokwane</option>
+                            <option value="Thohoyandou">Thohoyandou</option>
+                            <option value="Mokopane">Mokopane</option>
+                            <option value="Tzaneen">Tzaneen</option>
+                            <option value="Musina">Musina</option>
+                            <option value="Mbombela">Mbombela</option>
+                            <option value="Emalahlen">Emalahleni</option>
+                            <option value="Secunda">Secunda</option>
+                            <option value="Lydenburg">Lydenburg</option>
+                            <option value="White River">White River</option>
+                            <option value="Bloemfontein">Bloemfontein</option>
+                            <option value="Welkom">Welkom</option>
+                            <option value="Sasolburg">Sasolburg</option>
+                            <option value="Phuthaditjhaba">Phuthaditjhaba</option>
+                            <option value="Kroonstad">Kroonstad</option>
+                            <option value="Kimberley">Kimberley</option>
+                            <option value="Upington">Upington</option>
+                            <option value="Postmasburg">Postmasburg</option>
+                            <option value="Kuruman">Kuruman</option>
+                            <option value="De Aar">De Aar</option>
+                            <option value="Mahikeng (Mafikeng)">Mahikeng (Mafikeng)</option>
+                            <option value="Klerksdorp">Klerksdorp</option>
+                            <option value="Potchefstroom">Potchefstroom</option>
+                            <option value="Rustenburg">Rustenburg</option>
+                            <option value="Lichtenburg">Lichtenburg</option>
+                            <option value="Bellville">Bellville</option>
+                            <option value="Paternoster">Paternoster</option>
+                            <!-- Add more cities as needed -->
+                        </select>
+                    </div>
             <div class="mb-3">
-                <label for="serviceDescription" class="form-label">Service Description & location serving</label>
+                <label for="serviceDescription" class="form-label">Service Description</label>
                 <textarea class="form-control" id="serviceDescription" rows="3" required></textarea>
             </div>
             <div class="mb-3">
@@ -55,37 +127,217 @@
     </div>
 
     <script>
-        document.getElementById('serviceForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            var nurseName = document.getElementById('nurseName').value;
-            var serviceDescription = document.getElementById('serviceDescription').value;
-            var servicePrice = document.getElementById('servicePrice').value;
-            var phoneNumber = document.getElementById('phoneNumber').value;
-            var profilePicture = document.getElementById('profilePicture').files[0];
+        // Fetch nurse data from the backend
+async function fetchNurseData() {
+    try {
+        const response = await fetch('http://13.244.76.82:3000/api/nurses');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching nurse data:', error);
+        return [];
+    }
+}
 
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var serviceList = document.getElementById('serviceList');
-                var newService = document.createElement('div');
-                newService.className = 'card mt-3';
-                newService.innerHTML = `
-                       <div class="card-horizontal">
-                       <img src="${e.target.result}" class="card-img-left" alt="Profile Picture">
-                        <div class="card-body">
-                       <h5 class="card-title">${nurseName}</h5>
-                        <p class="card-text">${serviceDescription}</p>
-                        <p class="card-text"><strong>Price:</strong> R${servicePrice}</p>
-                        <p class="card-text"><strong>Phone:</strong> ${phoneNumber}</p>
+           // Display nurse data on the frontend
+function displayNurseData(nurses) {
+    const serviceList = document.getElementById('serviceList');
+    serviceList.innerHTML = ''; // Clear existing data
+
+    nurses.forEach(nurse => {
+        const newService = document.createElement('div');
+        newService.className = 'card mt-3';
+        newService.innerHTML = `
+            <div class="card-horizontal">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal-${nurse.nurseName.replace(/\s+/g, '')}">
+                    <img src="${nurse.profilePicture}" class="card-img-left" alt="Profile Picture" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer;">
+                </a>
+                <div class="card-body">
+
+                    <!-- Fullscreen Modal -->
+                    <div class="modal fade" id="imageModal-${nurse.nurseName.replace(/\s+/g, '')}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="imageModalLabel">Profile Picture</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="${nurse.profilePicture}" class="img-fluid" alt="Full Size Profile Picture">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                `;
-                serviceList.appendChild(newService);
-            };
-            reader.readAsDataURL(profilePicture);
+                    <h5 class="card-title">${nurse.nurseName}</h5>
+                    <p class="card-text"><strong>City:</strong> ${nurse.city}</p>
+                    <p class="card-text">${nurse.serviceDescription}</p>
+                    <p class="card-text"><strong>Price:</strong> R${nurse.servicePrice}</p>
+                    <p class="card-text"><strong>Phone:</strong> ${nurse.phoneNumber}</p>
+                </div>
+            </div>
+        `;
+        serviceList.appendChild(newService);
+    });
+}
+document.getElementById('serviceForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
 
-            document.getElementById('serviceForm').reset();
-        });
+    var nurseName = document.getElementById('nurseName').value;
+    var city = document.getElementById('city').value;
+    var serviceDescription = document.getElementById('serviceDescription').value;
+    var servicePrice = document.getElementById('servicePrice').value;
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var profilePicture = document.getElementById('profilePicture').files[0];
+
+    var reader = new FileReader();
+    reader.onload = async function(e) {
+        var profilePictureBase64 = e.target.result;
+
+        try {
+            const response = await fetch('http://13.244.76.82:3000/api/nurses', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nurseName: nurseName,
+                    city: city,
+                    serviceDescription: serviceDescription,
+                    servicePrice: servicePrice,
+                    phoneNumber: phoneNumber,
+                    profilePicture: profilePictureBase64
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                console.log('Nurse data saved successfully');
+            }
+
+            const data = await response.json();
+            console.log('Success:', data);
+
+            // Fetch and display updated nurse data
+            const nurses = await fetchNurseData();
+            displayNurseData(nurses);
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+
+        document.getElementById('serviceForm').reset();
+    };
+    reader.readAsDataURL(profilePicture);
+});
+
+// Initial display of nurse data
+window.onload = async function() {
+    const nurses = await fetchNurseData();
+    displayNurseData(nurses);
+};
+
+  // Function to resize image before upload
+  function resizeImage(file, maxWidth, maxHeight, quality) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          // Calculate new dimensions
+          let width = img.width;
+          let height = img.height;
+          
+          if (width > maxWidth) {
+            height = Math.round(height * (maxWidth / width));
+            width = maxWidth;
+          }
+          
+          if (height > maxHeight) {
+            width = Math.round(width * (maxHeight / height));
+            height = maxHeight;
+          }
+          
+          // Create canvas and resize image
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          // Convert to base64 with reduced quality
+          const resizedBase64 = canvas.toDataURL('image/jpeg', quality);
+          resolve(resizedBase64);
+        };
+        img.onerror = reject;
+        img.src = e.target.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Update the form submission to use resized image
+  document.getElementById('serviceForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    var nurseName = document.getElementById('nurseName').value;
+    var city = document.getElementById('city').value;
+    var serviceDescription = document.getElementById('serviceDescription').value;
+    var servicePrice = document.getElementById('servicePrice').value;
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var profilePicture = document.getElementById('profilePicture').files[0];
+
+    try {
+      // Resize image before upload (max 800x800px, 0.7 quality)
+      const resizedImage = await resizeImage(profilePicture, 800, 800, 0.7);
+      
+      // Now send the resized image to the server
+      const response = await fetch('http://13.244.76.82:3000/api/nurses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nurseName: nurseName,
+          city: city,
+          serviceDescription: serviceDescription,
+          servicePrice: servicePrice,
+          phoneNumber: phoneNumber,
+          profilePicture: resizedImage
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Success:', data);
+      
+      // Fetch and display updated nurse data
+      const nurses = await fetchNurseData();
+      displayNurseData(nurses);
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    
+    document.getElementById('serviceForm').reset();
+  });
+
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <footer>
+    <div class="container">
+        <p class="text-center text-muted">© 2025 Nrome. All rights reserved.</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@4.5.9/dist/amazon-cognito-identity.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

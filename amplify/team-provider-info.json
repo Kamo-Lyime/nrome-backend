@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nrome-dev-97a45-authRole",
+      "UnauthRoleArn": "arn:aws:iam::442042543090:role/amplify-nrome-dev-97a45-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::442042543090:role/amplify-nrome-dev-97a45-authRole",
+      "Region": "af-south-1",
+      "DeploymentBucketName": "amplify-nrome-dev-97a45-deployment",
+      "UnauthRoleName": "amplify-nrome-dev-97a45-unauthRole",
+      "StackName": "amplify-nrome-dev-97a45",
+      "StackId": "arn:aws:cloudformation:af-south-1:442042543090:stack/amplify-nrome-dev-97a45/e8466c10-05ee-11f0-9936-06e8c3fb7535"
+    }
+  }
+}

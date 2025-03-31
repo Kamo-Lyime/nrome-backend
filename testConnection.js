@@ -1,12 +1,15 @@
-// testConnection.js
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/medication-delivery')
+const uri = process.env.MONGODB_URI;
+
+console.log('MongoDB URI:', process.env.MONGODB_URI);
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to MongoDB successfully');
-    process.exit(0);
+    console.log('Connected to MongoDB Atlas');
+    mongoose.connection.close();
   })
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
+  .catch((error) => {
+    console.error('MongoDB Atlas connection error:', error);
   });
