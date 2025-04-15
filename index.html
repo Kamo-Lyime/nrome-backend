@@ -111,7 +111,7 @@
             };
     
             try {
-                const response = await fetch('http://13.244.76.82:3000/api/orders', {
+                const response = await fetch('https://13.244.76.82:3000/api/orders', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)
@@ -138,19 +138,6 @@
             newItem.innerHTML = '<input type="text" class="form-control" placeholder="Enter medication name">';
             medicationList.appendChild(newItem);
         });
-        // Define the Mongoose schema
-const orderSchema = new mongoose.Schema({
-    patientName: { type: String, required: true },
-    medications: { type: [String], required: true },
-    deliveryDate: { type: Date, required: true },
-    deliveryAddress: { type: String, required: true },
-    additionalComments: { type: String },
-    phoneNumber: { type: String, required: true },
-    email: { type: String, required: true }
-});
-
-// Create the Mongoose model
-const Order = mongoose.model('Order', orderSchema);
 
 // API endpoint to handle order data
 app.post('/api/orders', async (req, res) => {

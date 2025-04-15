@@ -130,7 +130,7 @@
         // Fetch nurse data from the backend
 async function fetchNurseData() {
     try {
-        const response = await fetch('http://13.244.76.82:3000/api/nurses');
+        const response = await fetch('https://13.244.76.82:3000/api/nurses');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -197,7 +197,7 @@ document.getElementById('serviceForm').addEventListener('submit', async function
         var profilePictureBase64 = e.target.result;
 
         try {
-            const response = await fetch('http://13.244.76.82:3000/api/nurses', {
+            const response = await fetch('https://13.244.76.82:3000/api/nurses', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -297,7 +297,7 @@ window.onload = async function() {
       const resizedImage = await resizeImage(profilePicture, 800, 800, 0.7);
       
       // Now send the resized image to the server
-      const response = await fetch('http://13.244.76.82:3000/api/nurses', {
+      const response = await fetch('https://13.244.76.82:3000/api/nurses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
