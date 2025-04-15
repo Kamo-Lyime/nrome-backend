@@ -24,9 +24,11 @@ app.use(cors());
 const allowedOrigins = [
   'http://nromefrontend.s3-website.af-south-1.amazonaws.com',
   'https://nromefrontend.s3-website.af-south-1.amazonaws.com',
-  'http://localhost:3000',  // For local development
-  'http://localhost:5000',  // Alternative local port
-  'http://127.0.0.1:5500'   // For Live Server in VS Code
+  'http://localhost:3000',
+  'http://localhost:5000',
+  'http://127.0.0.1:5500',
+  'http://www.nrome.co.za',
+  'https://www.nrome.co.za'
 ];
 
 // Configure CORS with more options
