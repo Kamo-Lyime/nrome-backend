@@ -22,13 +22,14 @@ app.use(cors());
 
 // Define allowed origins
 const allowedOrigins = [
+  'https://www.nrome.co.za',
+  'http://www.nrome.co.za',
   'http://nromefrontend.s3-website.af-south-1.amazonaws.com',
   'https://nromefrontend.s3-website.af-south-1.amazonaws.com',
   'http://localhost:3000',
   'http://localhost:5000',
   'http://127.0.0.1:5500',
-  'http://www.nrome.co.za',
-  'https://www.nrome.co.za'
+ 
 ];
 
 // Configure CORS with more options

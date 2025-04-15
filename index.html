@@ -6,6 +6,7 @@
     <title>Nrome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="script.js"></script>
     <style>
         /* Center-align the label */
         .form-label {
@@ -138,68 +139,6 @@
             newItem.innerHTML = '<input type="text" class="form-control" placeholder="Enter medication name">';
             medicationList.appendChild(newItem);
         });
-
-// API endpoint to handle order data
-app.post('/api/orders', async (req, res) => {
-    try {
-        const newOrder = new Order(req.body);
-        const savedOrder = await newOrder.save();
-        res.status(201).json({ message: 'Order saved successfully!', order: savedOrder });
-    } catch (error) {
-        console.error('Error saving order:', error);
-        res.status(500).json({ message: 'Error saving order', error: error.message });
-    }
-});
-const cron = require('node-cron');
-const AWS = require('aws-sdk');
-
-// Configure AWS Polly
-const polly = new AWS.Polly({ region: 'af-south-1' });
-
-// Schedule the task to run every day at a specific time
-cron.schedule('0 9 * * *', async () => {
-    console.log('Running medication reminder task');
-
-    try {
-        // Fetch orders for today
-        const today = new Date();
-        const orders = await Order.find({
-            deliveryDate: {
-                $gte: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-                $lt: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
-            }
-        });
-
-        // Send voice notifications for each order
-        for (const order of orders) {
-            const patientName = order.patientName;
-            const medications = order.medications.join(', ');
-            const phoneNumber = order.phoneNumber;
-
-            // Construct the message
-            const text = `Hello ${patientName}, this is a reminder to take your ${medications} today.`;
-
-            // Synthesize speech using Polly
-            const params = {
-                OutputFormat: 'mp3',
-                Text: text,
-                TextType: 'text',
-                VoiceId: 'Joanna' // You can change the voice ID
-            };
-
-            const data = await polly.synthesizeSpeech(params).promise();
-
-            // Send the voice notification to the patient
-            // (You'll need to implement the code to send the voice notification)
-            console.log(`Sending voice notification to ${patientName} at ${phoneNumber}`);
-        }
-    } catch (error) {
-        console.error('Error sending voice notifications:', error);
-    }
-}, {
-    scheduled: true,
-    timezone: 'Africa/Johannesburg' // Set the timezone to South Africa
-});
     </script>
     <footer>
         <div class="container">
