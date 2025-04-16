@@ -20,32 +20,18 @@ app.use(bodyParser.json({ limit: '10mb' })); // To handle large profile picture 
 app.use(cors());
 
 
-// Define allowed origins
+// Remove or comment out this line:
+// app.use(cors());
+
 const allowedOrigins = [
   'https://www.nrome.co.za',
   'http://www.nrome.co.za',
-  'http://nromefrontend.s3-website.af-south-1.amazonaws.com',
-  'https://nromefrontend.s3-website.af-south-1.amazonaws.com',
-  'http://localhost:3000',
-  'http://localhost:5000',
-  'http://127.0.0.1:5500',
- 
+  // ...other origins
 ];
-
-// Configure CORS with more options
-const cors = require('cors');
-app.use(cors({
-  origin: ['https://www.nrome.co.za', 'http://www.nrome.co.za'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
 
 app.use(cors({
   origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl requests)
     if (!origin) return callback(null, true);
-    
     if (allowedOrigins.indexOf(origin) === -1) {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
@@ -55,7 +41,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  maxAge: 86400 // 24 hours
+  maxAge: 86400
 }));
 
 // Routes
