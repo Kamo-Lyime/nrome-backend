@@ -33,6 +33,14 @@ const allowedOrigins = [
 ];
 
 // Configure CORS with more options
+const cors = require('cors');
+app.use(cors({
+  origin: ['https://www.nrome.co.za', 'http://www.nrome.co.za'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 app.use(cors({
   origin: function(origin, callback) {
     // Allow requests with no origin (like mobile apps, curl requests)
